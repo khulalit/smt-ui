@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
 function App() {
   return (
     <BrowserRouter>
-      <div>
-        <main>
+      <div className="min-h-screen bg-slate-50 text-slate-800 antialiased flex flex-col">
+        <main className="flex-1">
           <Routes>
             <Route path="/" element={<Navigate to="/insights" replace />} />
             <Route path="/insights" element={"Insights"} />
