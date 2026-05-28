@@ -15,11 +15,12 @@ export type EmployeesResponse = {
 };
 
 export type EmployeeFilters = {
-    search?: string;
+    name?: string;
     department?: string;
     status?: string;
     page?: number;
     limit?: number;
+    country?: string;
 };
 
 export async function getEmployees(
