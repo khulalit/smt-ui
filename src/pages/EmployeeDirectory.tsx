@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router";
 import { useEmployees } from "../hooks/useEmployees";
+import { useCreateEmployee } from "../hooks/useCreateEmployees";
 import { EmployeeHeader } from "../components/EmployeeHeader";
 import { EmployeeFilters } from "../components/EmployeeFilters";
 import { EmployeeTable } from "../components/EmployeeTable";
@@ -57,6 +58,9 @@ export const EmployeeDirectory: React.FC = () => {
     name: searchTerm,
     department: selectedDept,
   });
+
+  const { mutate: createNewEmployee, isPending: isCreating } =
+    useCreateEmployee();
 
   console.log(employees);
 
@@ -179,8 +183,7 @@ export const EmployeeDirectory: React.FC = () => {
     const salaryNum = Number(formData.salary);
 
     if (modalMode === "add") {
-      const newEmployee: Employee = {
-        id: Date.now().toString(),
+      createNewEmployee({
         fullName: formData.fullName,
         email: formData.email,
         jobTitle: formData.jobTitle,
@@ -188,8 +191,9 @@ export const EmployeeDirectory: React.FC = () => {
         country: formData.country,
         salary: salaryNum,
         hireDate: formData.hireDate,
-      };
+      });
     } else if (modalMode === "edit" && editingEmployeeId) {
+      // TODO: Implement edit functionality
     }
 
     setIsModalOpen(false);
