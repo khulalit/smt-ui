@@ -60,6 +60,14 @@ export const EmployeeDirectory: React.FC = () => {
 
   console.log(employees);
 
+  if (error) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 py-8 text-red-700">
+        Error: {error instanceof Error ? error.message : String(error)}
+      </div>
+    );
+  }
+
   const updateParams = (newParams: Record<string, string>) => {
     setSearchParams((searchParams) => {
       Object.entries(newParams).forEach(([key, value]) => {
@@ -189,6 +197,8 @@ export const EmployeeDirectory: React.FC = () => {
         salary: salaryNum,
         hireDate: formData.hireDate,
       };
+
+      console.log("Creating employee", newEmployee);
     } else if (modalMode === "edit" && editingEmployeeId) {
     }
 
@@ -199,6 +209,7 @@ export const EmployeeDirectory: React.FC = () => {
   // Delete Employee
   const handleDeleteEmployee = (id: string) => {
     if (confirm("Are you sure you want to delete this employee?")) {
+      console.log("Deleting employee", id);
     }
   };
 
