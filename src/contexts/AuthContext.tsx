@@ -6,11 +6,7 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router";
-import {
-  fetchCurrentUser,
-  login as loginRequest,
-  logout as logoutRequest,
-} from "../api/auth";
+import { fetchCurrentUser, login as loginRequest } from "../api/auth";
 
 export interface User {
   email: string;
@@ -69,7 +65,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const logout = async () => {
-    await logoutRequest().catch(() => {});
     localStorage.removeItem("accessToken");
     setUser(null);
     navigate("/login", { replace: true });

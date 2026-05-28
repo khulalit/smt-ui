@@ -19,10 +19,6 @@ export const login = (credentials: LoginCredentials) => {
   return apiClient.post<AuthResponse>("auth/login", credentials);
 };
 
-export const logout = () => {
-  return apiClient.post("auth/logout", null);
-};
-
 export const fetchCurrentUser = () => {
   return apiClient.get<any>("auth/me");
 };

@@ -64,10 +64,10 @@ export const Navbar: React.FC = () => {
           {user ? (
             <>
               <div className="hidden text-right sm:block">
-                <div className="text-xs font-semibold text-slate-900">
+                <div className="text-xs uppercase font-semibold text-slate-900">
                   {user.email}
                 </div>
-                <div className="text-xxs text-slate-500">HR User</div>
+                <div className=" text-slate-500 text-xs">{user.role}</div>
               </div>
               <button
                 type="button"
