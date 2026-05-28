@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
 import { Navbar } from './components/Navbar';
 import { InsightsDashboard } from './pages/Insights';
 import { QueryProvider } from './providers/QueryProviders';
+import { EmployeeDirectory } from './pages/EmployeeDirectory';
+
+
 function App() {
   return (
     <QueryProvider>
@@ -13,7 +16,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to="/insights" replace />} />
               <Route path="/insights" element={<InsightsDashboard />} />
-              <Route path="/employees" element={"Employees "} />
+              <Route path="/employees" element={<EmployeeDirectory />} />
               <Route path="*" element={<Navigate to="/insights" replace />} />
             </Routes>
           </main>
